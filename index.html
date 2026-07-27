@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="University of Makeni Computer Science AI Assistant"
+    >
+
+    <title>UNIMAK AI Chatbot Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main
+        id="landingPage"
+        class="landing-page"
+    >
+        <section class="hero-section">
+            <div class="institution-brand">
+                <img
+                    class="institution-logo"
+                    src="assets/unimak-logo.jfif"
+                    alt="University of Makeni logo"
+                >
+
+                <div>
+                    <p class="institution-name">
+                        University of Makeni
+                    </p>
+
+                    <p class="institution-subtitle">
+                        Computer Science Learning Support
+                    </p>
+                </div>
+            </div>
+
+            <p class="small-heading">
+                AI-POWERED LEARNING SUPPORT
+            </p>
+
+            <h1>
+                Computer Science AI Assistant
+            </h1>
+
+            <p class="hero-description">
+                Ask questions about programming, web development,
+                artificial intelligence, databases, networking,
+                software development and computer troubleshooting.
+            </p>
+
+            <button
+                id="openChatButton"
+                class="main-button"
+                type="button"
+                aria-haspopup="dialog"
+                aria-controls="chatWidget"
+            >
+                Open AI Assistant
+            </button>
+        </section>
+    </main>
+
+    <button
+        id="chatLauncher"
+        class="chat-launcher"
+        type="button"
+        aria-label="Open AI chatbot"
+        aria-expanded="false"
+        aria-controls="chatWidget"
+        aria-haspopup="dialog"
+    >
+        <span
+            class="launcher-icon"
+            aria-hidden="true"
+        >
+            💬
+        </span>
+
+        <span class="launcher-text">
+            Ask AI
+        </span>
+    </button>
+
+    <section
+        id="chatWidget"
+        class="chat-widget size-standard"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="chatbotTitle"
+        aria-describedby="chatbotDescription"
+        aria-hidden="true"
+        tabindex="-1"
+    >
+        <header class="chat-header">
+            <div class="assistant-profile">
+                <img
+                    class="assistant-logo-image"
+                    src="assets/unimak-logo.jfif"
+                    alt="University of Makeni logo"
+                >
+            </div>
+
+            <div class="assistant-information">
+                <h2 id="chatbotTitle">
+                    AI Chatbot Assistant
+                </h2>
+
+                <p id="chatbotDescription">
+                    <span
+                        id="statusDot"
+                        class="status-dot"
+                    ></span>
+
+                    <span id="statusText">
+                        Checking local AI...
+                    </span>
+                </p>
+            </div>
+
+            <div class="header-buttons">
+                <button
+                    id="themeButton"
+                    class="header-button"
+                    type="button"
+                    title="Toggle dark mode"
+                    aria-label="Toggle dark mode"
+                >
+                    🌙
+                </button>
+
+                <button
+                    id="settingsButton"
+                    class="header-button"
+                    type="button"
+                    title="Open chatbot settings"
+                    aria-label="Open chatbot settings"
+                    aria-controls="settingsPanel"
+                    aria-expanded="false"
+                >
+                    ⚙
+                </button>
+
+                <button
+                    id="expandButton"
+                    class="header-button"
+                    type="button"
+                    title="Open full-screen chatbot"
+                    aria-label="Toggle full-screen chatbot"
+                    aria-pressed="false"
+                >
+                    ⛶
+                </button>
+
+                <button
+                    id="newChatButton"
+                    class="header-button"
+                    type="button"
+                    title="Start new conversation"
+                    aria-label="Start new conversation"
+                >
+                    ＋
+                </button>
+
+                <button
+                    id="closeChatButton"
+                    class="header-button"
+                    type="button"
+                    title="Close chatbot"
+                    aria-label="Close chatbot"
+                >
+                    ✕
+                </button>
+            </div>
+        </header>
+
+        <div
+            id="screenReaderAnnouncements"
+            class="screen-reader-only"
+            aria-live="polite"
+            aria-atomic="true"
+        ></div>
+
+        <section
+            id="chatWindow"
+            class="chat-window"
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions text"
+            aria-atomic="false"
+            aria-busy="false"
+            tabindex="0"
+            aria-label="Chat conversation"
+        ></section>
+
+        <section
+            class="suggestions"
+            aria-label="Suggested questions"
+        >
+            <button
+                class="suggestion-button"
+                type="button"
+                data-question="What is artificial intelligence?"
+            >
+                What is AI?
+            </button>
+
+            <button
+                class="suggestion-button"
+                type="button"
+                data-question="Explain HTML, CSS and JavaScript with a simple example."
+            >
+                Web development
+            </button>
+
+            <button
+                class="suggestion-button"
+                type="button"
+                data-question="What is Python used for?"
+            >
+                Python uses
+            </button>
+        </section>
+
+        <form
+            id="chatForm"
+            class="chat-form"
+        >
+            <label
+                for="userInput"
+                class="screen-reader-only"
+            >
+                Enter your computer science question
+            </label>
+
+            <button
+                id="voiceButton"
+                class="voice-button"
+                type="button"
+                title="Use voice input"
+                aria-label="Use voice input"
+            >
+                🎤
+            </button>
+
+            <textarea
+                id="userInput"
+                name="message"
+                rows="1"
+                maxlength="4000"
+                placeholder="Ask a computer science question..."
+                autocomplete="off"
+                required
+            ></textarea>
+
+            <button
+                id="sendButton"
+                class="send-button"
+                type="submit"
+                aria-label="Send message"
+            >
+                Send
+            </button>
+        </form>
+
+        <footer class="chat-footer">
+            <div class="footer-controls">
+                <span id="characterCounter">
+                    0 / 4000
+                </span>
+
+                <button
+                    id="autoSpeakButton"
+                    class="footer-button"
+                    type="button"
+                    aria-pressed="false"
+                >
+                    🔇 Auto-speak off
+                </button>
+
+                <button
+                    id="clearButton"
+                    class="footer-button delete-button"
+                    type="button"
+                >
+                    Clear
+                </button>
+            </div>
+
+            <p class="ai-disclaimer">
+                AI responses may be inaccurate. Verify important information.
+            </p>
+
+            <p class="privacy-note">
+                Chat history and settings are stored in this browser only.
+            </p>
+        </footer>
+
+        <aside
+            id="settingsPanel"
+            class="settings-panel"
+            aria-labelledby="settingsTitle"
+            aria-hidden="true"
+            hidden
+        >
+            <header class="settings-header">
+                <div>
+                    <p class="settings-eyebrow">
+                        CHATBOT CONTROL CENTRE
+                    </p>
+
+                    <h3 id="settingsTitle">
+                        Chatbot Settings
+                    </h3>
+                </div>
+
+                <button
+                    id="closeSettingsButton"
+                    class="settings-close-button"
+                    type="button"
+                    aria-label="Close chatbot settings"
+                >
+                    ✕
+                </button>
+            </header>
+
+            <div class="settings-content">
+                <div class="settings-grid">
+                    <label class="field-group">
+                        <span>Local AI model</span>
+
+                        <select id="modelSelect">
+                            <option value="llama3.2:1b">
+                                llama3.2:1b
+                            </option>
+                        </select>
+                    </label>
+
+                    <label class="field-group">
+                        <span>Response length</span>
+
+                        <select id="responseLengthSelect">
+                            <option value="short">
+                                Short
+                            </option>
+
+                            <option
+                                value="medium"
+                                selected
+                            >
+                                Medium
+                            </option>
+
+                            <option value="long">
+                                Long
+                            </option>
+                        </select>
+                    </label>
+
+                    <label class="field-group full-width">
+                        <span>
+                            Temperature:
+                            <strong id="temperatureValue">
+                                0.4
+                            </strong>
+                        </span>
+
+                        <input
+                            id="temperatureInput"
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="0.1"
+                            value="0.4"
+                        >
+
+                        <small>
+                            Lower values are more focused. Higher values are
+                            more varied and creative.
+                        </small>
+                    </label>
+
+                    <label class="field-group full-width">
+                        <span>Additional system instruction</span>
+
+                        <textarea
+                            id="systemPromptInput"
+                            rows="5"
+                            maxlength="3000"
+                            placeholder="Example: Explain answers as if teaching a first-year university student."
+                        ></textarea>
+                    </label>
+
+                    <label class="field-group">
+                        <span>Chatbot size</span>
+
+                        <select id="chatSizeSelect">
+                            <option value="compact">
+                                Compact
+                            </option>
+
+                            <option
+                                value="standard"
+                                selected
+                            >
+                                Standard
+                            </option>
+
+                            <option value="large">
+                                Large
+                            </option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="settings-actions">
+                    <button
+                        id="saveSettingsButton"
+                        class="primary-settings-button"
+                        type="button"
+                    >
+                        Save settings
+                    </button>
+
+                    <button
+                        id="resetSettingsButton"
+                        class="secondary-settings-button"
+                        type="button"
+                    >
+                        Reset defaults
+                    </button>
+                </div>
+
+                <p class="logo-help">
+                    To change the logo later, replace
+                    <code>frontend/assets/unimak-logo.jfif</code>
+                    with another image using the same filename.
+                </p>
+            </div>
+        </aside>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
